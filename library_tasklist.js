@@ -40,29 +40,24 @@ var taskList = {
         return this;
     },
     display: function() {
-        var html = "";
         this.sort();
-
-        //create and load html string from sorted array
-        for (var i in this.tasks) {
-            html = html.concat("<p>");
-            html = html.concat("<a href='#' title='", i, "'>Delete</a>");
-            html = html.concat("<a href='#' title='", i, "'>Edit</a>");
-            html = html.concat(this.tasks[i]);
-            html = html.concat("</p>");
-        }
-        this.displayDiv.innerHTML = html;
-        //get links and add click event handlers
-        var links = this.displayDiv.getElementsByTagName("a");
-
-        for (var i = 0; i < links.length; i++) {
-            if(links[i].innerHTML === "Delete") {
-                links[i].onclick = this.deleteClickHandler;
-            } else {
-                links[i].onclick = this.editClickHandler;
-            }
-            
-        }
+        this.displayDiv.replaceChildren();
+        this.tasks.forEach((task, i) => {
+            const row = document.createElement("p");
+            const remove = document.createElement("a");
+            remove.href = "#";
+            remove.title = String(i);
+            remove.textContent = "Delete";
+            remove.onclick = this.deleteClickHandler;
+            const edit = document.createElement("a");
+            edit.href = "#";
+            edit.title = String(i);
+            edit.textContent = "Edit";
+            edit.onclick = this.editClickHandler;
+            // Stored tasks are user text, never HTML or executable markup.
+            row.append(remove, edit, document.createTextNode(String(task)));
+            this.displayDiv.append(row);
+        });
         return this;
     }
 };
