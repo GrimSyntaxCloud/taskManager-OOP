@@ -805,3 +805,58 @@ h2 {
     min-height: 309px;
   }
 }
+@media (max-width: 620px) {
+  .supply-panel {
+    display: block;
+  }
+  .supply-panel > .eyebrow {
+    margin-bottom: 14px;
+  }
+  h1 {
+    max-width: 300px;
+    font-size: 37px;
+    line-height: 1.04;
+  }
+  h1 br {
+    display: none;
+  }
+  h1 br::after {
+    content: " ";
+  }
+  h1 em {
+    font: inherit;
+    letter-spacing: inherit;
+  }
+  .intro {
+    display: none;
+  }
+  .new-card {
+    margin-top: 25px;
+  }
+}
+@media (max-width: 360px) {
+  .list-header {
+    gap: 5px;
+  }
+  h2 {
+    font-size: 23px;
+    white-space: nowrap;
+  }
+  #task-count {
+    width: 27px;
+    height: 27px;
+    font-size: 12px;
+    margin-left: 1px;
+  }
+  .sort-label {
+    font-size: 18px;
+  }
+  .sort-label span {
+    font-size: 6px;
+    white-space: nowrap;
+  }
+  .list-header .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.4px;
+  }
+}
